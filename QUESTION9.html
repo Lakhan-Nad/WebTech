@@ -1,0 +1,152 @@
+<!doctype html>
+<head>
+    <title>18BIT0182</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+    </script>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            background: rgb(210, 212, 212);
+        }
+        h1 {
+            text-align: center;
+            font-size: 350%;
+            width: 100%;
+            background: #34495E;
+            margin: 0;
+            padding: 2% 0;
+            color: cornsilk;
+        }
+        select,
+        input {
+            position: absolute;
+            left: 41%;
+        }
+        label {
+            text-align: left;
+            position: absolute;
+            left: 20%;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .radio {
+            text-align: right;
+            position: absolute;
+            left: 43%;
+            font-size: 20px;
+        }
+        #line {
+            border-top: 3px dotted #000;
+        }
+        #submitdiv {
+            width: 100%;
+            height: 30px;
+            background-color: #34495E;
+            text-align: center;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        #submit {
+            margin-left: -600px;
+            width: 200px;
+            height: 30px;
+            border: none;
+            background-color: cornsilk;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Event Registration Form</h1>
+    <br>
+    <br>
+    <form>
+        <label for="firstname">First Name</label>
+        <input type="text" name="firstname" id="firstname">
+        <br><br>
+        <label for="lastname">Last Name</label>
+        <input type="text" name="lastname" id="lastname">
+        <br><br>
+        <label for="mailAdd">Mailing Address</label>
+        <input type="text" name="mailAdd" id="mailAdd">
+        <br><br>
+        <label for="city">City</label>
+        <input type="text" name="city" id="city">
+        <br><br>
+        <label for="state">State</label>
+        <select name="state" id="state">
+            <option value="Assam" selected="selected">Assam</option>
+            <option value="Rajasthan">Rajasthan</option>
+            <option value="TamilNadu">Tamil Nadu</option>
+            <option value="Gujrat">Gujrat</option>
+        </select>
+        <br><br>
+        <label for="zip">Zip code</label>
+        <input type="text" name="zip" id="zip">
+        <br><br>
+        <hr id="line">
+        <label for="speaking">Are you speaking at the conference </label>
+        <input type="radio" name="speaking" id="yes" value="yes"><span class="radio">yes</span><br>
+        <input type="radio" name="speaking" id="no" value="no"><span class="radio">no</span><br>
+        <br><br>
+        <label for="pass">Conference Pass</label>
+        <input type="radio" name="pass" value="1-day Pass"><span class="radio">1-day Pass</span><br>
+        <input type="radio" name="pass" value="2-day Pass"><span class="radio">1-day Pass</span><br>
+        <input type="radio" name="pass" value="3-day Pass"><span class="radio">1-day Pass</span><br>
+        <input type="radio" name="pass" value="4-day Pass"><span class="radio">1-day Pass</span><br>
+        <br><br>
+        <hr id="line">
+        <label for="meal">Meal preference</label>
+        <select name="meal" id="meal">
+            <option value="veg"></option>
+            <option value="veg">VEG</option>
+            <option value="nonveg">NON-VEG</option>
+        </select>
+        <br><br>
+        <div id="submitdiv">
+            <button id="submit" onclick="return somerandom()">Submit</button>
+        </div>
+    </form>
+    <script>
+        function somerandom() {
+            if ($("#firstname").val() = "") {
+                $("#firstname").focus();
+                alert("Field Mandatory");
+                return false;
+            }
+            if ($("#lastname").val() = "") {
+                $("#lastname").focus();
+                alert("Field Mandatory");
+                return false;
+            }
+            if ($("#city").val() = "") {
+                $("#city").focus();
+                alert("Field Mandatory");
+                return false;
+            }
+            if ($("#meal").val() = "") {
+                $("#meal").focus();
+                alert("Field Mandatory");
+                return false;
+            }
+            if ($("#state").val() = "") {
+                $("#state").focus();
+                alert("Field Mandatory");
+                return false;
+            }
+            if ($("#zip").val().length < 5) {
+                $("#zip").focus();
+                alert("Zip size should be greater than 5");
+                return false;
+            }
+            var emailregx = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+            if (emailregx.test($("#mailAdd").val()) == false) {
+                $("#mailAdd").focus();
+                alert("Email Address Incorrect");
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>

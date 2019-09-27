@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+    <title>18BIT0182</title>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>City</th>
+            <th>State</th>
+        </tr>
+        <tr>
+            <td>ABCD</td>
+            <td>BCDE</td>
+            <td>CDEF</td>
+            <td>DEFG</td>
+        </tr>
+        <tr>
+            <td>ABCD</td>
+            <td>BCDE</td>
+            <td>CDEF</td>
+            <td>DEFG</td>
+        </tr>
+        <tr>
+            <td>ABCD</td>
+            <td>BCDE</td>
+            <td>CDEF</td>
+            <td>DEFG</td>
+        </tr>
+        <tr>
+            <td>ABCD</td>
+            <td>BCDE</td>
+            <td>CDEF</td>
+            <td>DEFG</td>
+        </tr>
+        <tr>
+            <td>ABCD</td>
+            <td>BCDE</td>
+            <td>CDEF</td>
+            <td>DEFG</td>
+        </tr>
+        <tr>
+            <td>ABCD</td>
+            <td>BCDE</td>
+            <td>CDEF</td>
+            <td>DEFG</td>
+        </tr>
+        <tr>
+            <td>ABCD</td>
+            <td>BCDE</td>
+            <td>CDEF</td>
+            <td>DEFG</td>
+        </tr>
+    </table>
+    <script>
+        $(function () {
+            $("table").css("border", "1px solid white");
+            $("table").css("text-align", "left");
+            $("th").css("background-color", "white");
+            $("th").css("text-align", "center");
+            $("th").css("color", "black");
+            $("tr th:nth-child(1)").css("width", "150px");
+            $("tr th:nth-child(2)").css("width", "150px");
+            $("tr th:nth-child(3)").css("width", "300px");
+            $("tr th:nth-child(4)").css("width", "300px");
+            $("table tr:nth-child(even)").css("background-color", "gray");
+            $("table tr:nth-child(even)").css("color", "white");
+            $("table tr:nth-child(odd)").css("background-color", "white");
+            $("table tr:nth-child(odd)").css("color", "black");
+        });
+    </script>
+</body>
+</html>

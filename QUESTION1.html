@@ -1,0 +1,27 @@
+<html>
+<head>
+    <title>18BIT0182</title>
+</head>
+<body>
+    <button onclick="calculate_charges()">Get Parking Fees</button>
+    <script>
+
+        function calculate_charges() {
+            var hours = prompt('Enter the number of hours you parked')
+            var parkingFees;
+
+            if (hours <= 3) {
+                parkingFees = 2.00;
+            }
+            else {
+                var roundoffHOurs = Math.ceil(hours);
+                parkingFees = 2.00 + 0.50 * (roundoffHOurs - 3);
+                if (parkingFees > 10) {
+                    parkingFees = 10.00;
+                }
+            }
+            document.write('<p>Your parking charges are $', parkingFees);
+        }         
+    </script>
+</body>
+</html>

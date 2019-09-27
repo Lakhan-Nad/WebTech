@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+	</script>
+	<title>18BIT0182</title>
+</head>
+
+<body>
+	<h1>My super nifty to-do list</h1>
+	<input type="text" style="width:300px" id="textinp">
+	<button id="add" onclick="somerandom()">add</button>
+	<button id="remove" onclick="deletefromlist()">remove</button>
+	<ul id="ul">
+	</ul>
+	<script type="text/javascript">
+		function color() {
+			$("li:nth-child(odd)").css("background-color", "white");
+			$("li:nth-child(even)").css("background-color", "yellow");
+			$("li").css("width", "500px");
+		}
+		function somerandom() {
+			var txt = $("#textinp").val().toLowerCase();
+			var ul = $("#ul");
+			var match = false;
+			if ($("li").length > 0) {
+				$.each($("li"), function (i, obj) {
+					if (obj.innerHTML == txt) {
+						$("#textinp").val("");
+						match = true;
+						return false;
+					}
+				})
+			}
+			if (match == false) {
+				var appnd = "<li>" + txt + "</li>";
+				ul.append(appnd);
+				$("#textinp").val("");
+				color();
+			}
+		}
+		function deletefromlist() {
+			var txt = $("#textinp").val().toLowerCase();
+			var ul = $("#ul");
+			if ($("li").length > 0) {
+				$.each($("li"), function (i, obj) {
+					if (obj.innerHTML == txt) {
+						$("#textinp").val("");
+						obj.remove();
+						return false;
+					}
+
+				})
+			}
+			color();
+		}
+	</script>
+</body>
+
+</html>

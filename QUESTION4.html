@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+    <title>18BIT0182</title>
+    <style>
+        h1 {
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 50px;
+            font-weight: bold;
+        }
+        label {
+            font-weight: bold;
+            font-size: 30px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        input#phrase {
+            width: 300px;
+            height: 20px;
+            border: 1px inset black;
+        }
+
+        input#filter {
+            width: 100px;
+            height: 20px;
+            border: 1px inset black;
+        }
+        #container {
+            max-width: 1000px;
+            padding: 20px;
+        }
+        .words {
+            border: 2px dotted red;
+            border-radius: 5px;
+            float: left;
+            margin: 5px;
+            max-width: fit-content;
+            padding: 5px;
+            color: red;
+            font-weight: bold;
+            background-color: lightpink;
+        }
+        button {
+            font-size: 20px;
+        }
+        #message {
+            font-weight: bold;
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Sentence Reverser!</h1><br />
+    <label>Phrase: </label><input type="text" id="phrase" /><br /><br />
+    <label>Filter: </label><input type="text" id="filter" value="" /><br /><br />
+    <button onclick="eval()">Go!</button>
+    <div id="container">
+    </div>
+    <br />
+    <p id="message"></p>
+    <script>
+        function deleteContainerChild() {
+            var e = document.getElementById("container");
+            var child = e.lastElementChild;
+            while (child) {
+                e.removeChild(child);
+                child = e.lastElementChild;
+            }
+        }
+        function eval() {
+            var phrase = document.getElementById("phrase").value;
+            var filter = document.getElementById("filter").value;
+            var container = document.getElementById("container");
+            var message = document.getElementById("message");
+            var arr = phrase.split(" ");
+            deleteContainerChild();
+            message.textContent = "";
+            arr.reverse();
+            if (filter == "") {
+                filter = " ";
+            }
+            else {
+                filter = filter.toLowerCase();
+            }
+            var arr2 = [];
+            var temp = "";
+            var count = 0;
+            for (var i = 0; i < arr.length; i++) {
+                temp = arr[i].toLowerCase();
+                if (temp.includes(filter) == true) {
+                    count++;
+                }
+                else {
+                    arr2.push(arr[i]);
+                }
+            }
+            for (var i = 0; i < arr2.length; i++) {
+                let div = document.createElement("div");
+                div.classList.add("words");
+                div.textContent = arr2[i];
+                if (i % 2 == 0) {
+                    div.style.textDecoration = "underline";
+                }
+                container.appendChild(div);
+            }
+            if (count > 0) {
+                message.textContent = count + " " + "word(s)" + " " + "filtered" + " " + "out."
+            }
+        }
+    </script>
+</body>
+</html>

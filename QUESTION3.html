@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>18BIT0182</title>
+</head>
+<style>
+    input {
+        width: 300px;
+        border: 2px inset black;
+        color: black;
+        font-size: 15px;
+    }
+    textarea {
+        width: 300px;
+        height: 150px;
+        overflow-y: scroll;
+        border: 2px inset black;
+    }
+    input:hover,
+    textarea:hover {
+        border: 2px solid blue;
+    }
+    label {
+        font-size: 20px;
+        font-weight: bold;
+        font-family: cursive;
+    }
+</style>
+<body>
+    <form id="frm1">
+        <label for="stuname">Student Name:</label>
+        <input type="text" name="stuname" id="stuname">
+        <br><br>
+        <label for="regNo">Registration Number:</label>
+        <input type="text" name="regNo" id="regNo">
+        <br><br>
+        <label for="dob">DOB:</label>
+        <input type="text" name="dob" id="dob">
+        <br><br>
+        <label for="program">Program:</label>
+        <input type="text" name="program" id="program">
+        <br><br>
+        <label for="email">Email Id:</label>
+        <input type="text" name="email" id="email">
+        <br><br>
+        <label for="temAd">Temporary Address:</label>
+        <textarea name="temAd" id="temAd"></textarea>
+        <br><br>
+        <label for="marksame">Is Permanent and Temporary Address same:</label>
+        <input type="checkbox" name="marksame" id="marksame" style="width:20px">
+        <br><br>
+        <label for="perAd">Permanent Address:</label>
+        <textarea name="perAd" id="perAd"></textarea>
+        <br><br>
+        <label for="phNo">Phone Number:</label>
+        <input type="text" name="phNo" id="phNo">
+        <br><br>
+        <button onclick="return takeInput()">SUBMIT</button>
+    </form>
+    <script>
+        var checkBox = document.getElementById('marksame');
+        var tempedit = document.getElementById("temAd");
+        tempedit.oninput = function () {
+            if (checkBox.checked) {
+                document.getElementById("perAd").value = document.getElementById("temAd").value;
+                document.getElementById("perAd").disabled = true;
+            }
+        }
+        checkBox.onclick = function () {
+            if (this.checked) {
+                document.getElementById("perAd").value = document.getElementById("temAd").value;
+                document.getElementById("perAd").disabled = true;
+
+            } else {
+                document.getElementById("perAd").disabled = false;
+            }
+        };
+        function takeInput() {
+            var stuname = document.getElementById("stuname").value;
+            var regNo = document.getElementById("regNo").value;
+            var dob = document.getElementById("dob").value;
+            var program = document.getElementById("program").value;
+            var email = document.getElementById("email").value;
+            var temAd = document.getElementById("temAd").value;
+            var perAd = document.getElementById("perAd").value;
+            var phNo = document.getElementById("phNo").value;
+            var emailregx = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+            var regNoregx = /^[a-zA-Z0-9]{9}$/;
+            var nameregx = /^[a-z A-Z]{5,30}$/;
+            var phoneregx = /^[1-9]{1}[0-9]{9}$/;
+            if (nameregx.test(stuname) == false) {
+                document.getElementById("stuname").focus();
+                alert("Name should only have alphabets space and length <= 30");
+                return false;
+            }
+            if (regNoregx.test(regNo) == false) {
+                document.getElementById("regNo").focus();
+                alert("Reg no should be of contain only alphabets and digits and length==9");
+                return false;
+            }
+            if (emailregx.test(email) == false) {
+                document.getElementById("email").focus();
+                alert("Email should be like 'abc@xyz.com'");
+                return false;
+            }
+            if (phoneregx.test(phNo) == false) {
+                document.getElementById("phNo").focus;
+                alert("Phone should contain exactly 10 digits.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>

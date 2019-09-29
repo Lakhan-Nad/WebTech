@@ -26,7 +26,7 @@
 			var match = false;
 			if ($("li").length > 0) {
 				$.each($("li"), function (i, obj) {
-					if (obj.innerHTML == txt) {
+					if ($(obj).html() == txt) {
 						$("#textinp").val("");
 						match = true;
 						return false;
@@ -34,7 +34,7 @@
 				})
 			}
 			if (match == false) {
-				var appnd = "<li>" + txt + "</li>";
+				var appnd = $("<li></li>").text(txt);
 				ul.append(appnd);
 				$("#textinp").val("");
 				color();
@@ -45,7 +45,7 @@
 			var ul = $("#ul");
 			if ($("li").length > 0) {
 				$.each($("li"), function (i, obj) {
-					if (obj.innerHTML == txt) {
+					if ($(obj).html() == txt) {
 						$("#textinp").val("");
 						obj.remove();
 						return false;
